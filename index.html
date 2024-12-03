@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Universitaria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="tx">Plataforma ITEC</h1>
+        <nav>
+            <ul>
+                <li><a href="#gestionar-academica">Gestión Académica</a></li>
+                <li><a href="#administracion">Administración</a></li>
+                <li><a href="#gestion-usuarios">Gestión de Usuarios</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de bienvenida -->
+    <section id="bienvenida">
+        <h2>¡Bienvenido a la Plataforma ITEC!</h2>
+        <p>Accede a todos los módulos de gestión académica, administración y usuarios.</p>
+        <button onclick="document.location = '#gestionar-academica'">Comenzar</button>
+    </section>
+
+    <!-- Sección de Gestión Académica -->
+    <section id="gestionar-academica">
+        <h2>Gestión Académica</h2>
+        <p>Aquí puedes gestionar la inscripción de cursos, historial académico, asignación de profesores, y mucho más.</p>
+        <!-- Contenido de Module.html que corresponde a Gestión Académica -->
+        <section id="inscripcion">
+            <h2>Registrar Inscripción en Línea</h2>
+            <form id="form-inscripcion">
+                <label for="estudiante">Nombre del Estudiante:</label>
+                <input type="text" id="estudiante" required placeholder="Nombre completo del estudiante">
+                <label for="curso">Curso:</label>
+                <select id="curso" required>
+                    <option value="desarrollo_web">Desarrollo Web</option>
+                    <option value="bases_datos">Bases de Datos</option>
+                    <option value="redes_computadoras">Redes de Computadoras</option>
+                    <option value="seguridad_informatica">Seguridad Informática</option>
+                    <option value="sistemas_operativos">Sistemas Operativos</option>
+
+                </select>
+                <label for="horario">Horario:</label>
+                <input type="text" id="horario" required placeholder="Ej: Lunes 10:00 AM - 12:00 PM">
+                <button type="submit">Inscribir</button>
+            </form>
+            <div id="inscripcion-confirmada" style="display:none;">
+                <p>Inscripción confirmada para <span id="curso-inscrito"></span> el <span id="horario-inscrito"></span>.</p>
+            </div>
+        </section>
+
+        <section id="historial">
+            <h2>Consultar Historial Académico</h2>
+            <form id="form-historial">
+                <label for="estudiante-historial">Nombre del Estudiante:</label>
+                <input type="text" id="estudiante-historial" required placeholder="Nombre completo del estudiante">
+                <button type="submit">Consultar</button>
+            </form>
+            <div id="historial-academico">
+                <h3>Historial Académico</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Calificación</th>
+                            <th>Año</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historial-table-body">
+                        <!-- Historial se mostrará aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="profesores">
+            <h2>Asignación de Profesores a Cursos</h2>
+            <form id="form-profesor">
+                <label for="curso-profesor">Curso:</label>
+                <select id="curso-profesor" required>
+                    <option value="matematica">Matemáticas</option>
+                    <option value="ingles">Inglés</option>
+                    <option value="fisica">Física</option>
+                    <option value="programacion">Programación</option>
+                </select>
+                <label for="profesor">Profesor:</label>
+                <input type="text" id="profesor" required placeholder="Nombre del profesor">
+                <button type="submit">Asignar</button>
+            </form>
+            <div id="profesor-asignado" style="display:none;">
+                <p>Profesor <span id="profesor-nombre"></span> asignado al curso <span id="curso-profesor-asignado"></span>.</p>
+            </div>
+        </section>
+
+        <section id="calificaciones">
+            <h2>Registrar Calificaciones de Estudiantes</h2>
+            <form id="form-calificaciones">
+                <label for="curso-calificaciones">Curso:</label>
+                <select id="curso-calificaciones" required>
+                    <option value="matematica">Matemáticas</option>
+                    <option value="ingles">Inglés</option>
+                    <option value="fisica">Física</option>
+                    <option value="programacion">Programación</option>
+                </select>
+                <label for="estudiante-calificaciones">Estudiante:</label>
+                <input type="text" id="estudiante-calificaciones" required placeholder="Nombre del estudiante">
+                <label for="nota">Nota:</label>
+                <input type="number" id="nota" required min="0" max="10" placeholder="Calificación (0-10)">
+                <button type="submit">Registrar Nota</button>
+            </form>
+            <div id="nota-registrada" style="display:none;">
+                <p>Nota de <span id="nombre-estudiante"></span> registrada en el curso <span id="curso-registrado"></span>.</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- Sección de Administración -->
+    <!-- Sección de Administración -->
+<section id="administracion">
+    <h2>Administración</h2>
+    
+    <p>Accede a las herramientas de administración de la plataforma.</p>
+
+    <!-- Métodos de Pago -->
+    <section id="metodos-pago">
+        <h3>Seleccionar Método de Pago</h3>
+        <form id="form-metodo-pago">
+            <label for="metodo-pago">Método de Pago:</label>
+            <select id="metodo-pago" required>
+                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                <option value="transferencia">Transferencia Bancaria</option>
+                <option value="efectivo">Pago en Efectivo</option>
+                <option value="Codigo_QR">Codigo QR</option>
+            </select>
+            <button type="submit">Confirmar Método de Pago</button>
+        </form>
+        <div id="metodo-pago-seleccionado" style="display:none;">
+            <p>Método de pago seleccionado: <span id="metodo-seleccionado"></span>.</p>
+        </div>
+    </section>
+
+    <!-- Generador de Código QR (solo un botón) -->
+    <section id="generador-qr">
+        <h3>Generar Código QR</h3>
+        <button id="btn-generar-qr">Generar QR</button>
+        <div id="qr-generado" style="display:none;">
+            <h4>Escanea el siguiente código QR:</h4>
+            <img id="codigo-qr" src="" alt="QR generado">
+        </div>
+    </section>
+
+    <!-- Notificación de Pagos Pendientes -->
+    <section id="notificaciones-pago">
+        <h3>Pagos Pendientes</h3>
+        <form id="form-pagos-pendientes">
+            <label for="estudiante-pendientes">Estudiante:</label>
+            <input type="text" id="estudiante-pendientes" required placeholder="Nombre del estudiante">
+            <button type="submit">Consultar Pagos Pendientes</button>
+        </form>
+        <div id="lista-pagos-pendientes" style="display:none;">
+            <h4>Pagos Pendientes para <span id="estudiante-pendientes-nombre"></span>:</h4>
+            <ul id="pendientes-lista">
+                <!-- Aquí se mostrarán los pagos pendientes -->
+                <li>Curso de Matemáticas - 250</li>
+                <li>Curso de Física - 400</li>
+                <li>Curso de Programación - 100</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Confirmar pagos -->
+    <section id="confirmar-pago">
+        <h3>Confirmar Pago</h3>
+        <form id="form-confirmar-pago">
+            <label for="codigo-pago">Código de Pago:</label>
+            <input type="text" id="codigo-pago" required placeholder="Código único del pago">
+            <button type="submit">Confirmar Pago</button>
+        </form>
+        <div id="pago-confirmado" style="display:none;">
+            <p>Pago con código <span id="codigo-pago-confirmado"></span> confirmado.</p>
+        </div>
+    </section>
+
+    <!-- Validar documentos pendientes -->
+    <section id="validar-documentos">
+        <h3>Validar Documentos Pendientes</h3>
+        <form id="form-validar-documentos">
+            <label for="estudiante-documentos">Estudiante:</label>
+            <input type="text" id="estudiante-documentos" required placeholder="Nombre del estudiante">
+            <label for="documento-pendiente">Documento pendiente:</label>
+            <input type="text" id="documento-pendiente" required placeholder="Ej: Certificado de notas">
+            <button type="submit">Validar Documento</button>
+        </form>
+        <div id="documento-validado" style="display:none;">
+            <p>Documento <span id="documento-validado-nombre"></span> validado para <span id="estudiante-validado"></span>.</p>
+        </div>
+    </section>
+
+    <!-- Generación de documento PDF -->
+    <section id="generar-pdf">
+        <h3>Generar Documentos de Pago (PDF)</h3>
+        <form id="form-generar-pdf">
+            <label for="estudiante-pdf">Estudiante:</label>
+            <input type="text" id="estudiante-pdf" required placeholder="Nombre completo del estudiante">
+            <label for="monto-pdf">Monto de pago:</label>
+            <input type="number" id="monto-pdf" required placeholder="Monto pagado">
+            <button type="submit">Generar PDF</button>
+        </form>
+        <div id="pdf-generado" style="display:none;">
+            <p>Documento PDF generado para <span id="pdf-estudiante"></span> con un monto de <span id="pdf-monto"></span>.</p>
+        </div>
+    </section>
+
+    <!-- Consultar estudiantes inscritos por curso y semestre -->
+    <section id="consultar-estudiantes">
+        <h3>Consultar Estudiantes Inscritos</h3>
+        <button id="mostrar-estudiantes">Ver Estudiantes Inscritos</button>
+        <div id="resultado-consulta-estudiantes" style="display:none;">
+            <h4>Estudiantes Inscritos</h4>
+            <ul id="estudiantes-lista">
+                <!-- Aquí se mostrarán los estudiantes inscritos -->
+                <li>Enrrique</li>
+                <li>Jose</li>
+                <li>Saul</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Registrar nuevo curso -->
+    <section id="registrar-curso">
+        <h3>Registrar Nuevo Curso</h3>
+        <form id="form-registrar-curso">
+            <label for="nombre-curso">Nombre del Curso:</label>
+            <input type="text" id="nombre-curso" required placeholder="Nombre del curso">
+            <label for="cupos-curso">Número de Cupos:</label>
+            <input type="number" id="cupos-curso" required placeholder="Número de cupos disponibles">
+            <label for="requisitos-curso">Requisitos:</label>
+            <input type="text" id="requisitos-curso" required placeholder="Requisitos del curso">
+            <button type="submit">Registrar Curso</button>
+        </form>
+        <div id="curso-registrado" style="display:none;">
+            <p>Curso <span id="curso-registrado-nombre"></span> registrado con <span id="curso-cupos"></span> cupos.</p>
+        </div>
+    </section>
+
+    <!-- Consultar estudiantes por período -->
+    <section id="consultar-estudiantes-periodo">
+        <h3>Información de Estudiantes por Período</h3>
+        <form id="form-consultar-periodo">
+            <label for="periodo-consultar">Período (Ej: 2024-1):</label>
+            <input type="text" id="periodo-consultar" required placeholder="Ej: 2024-1">
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="resultado-consulta-periodo">
+            <h4>Estudiantes en el Período</h4>
+            <ul id="estudiantes-periodo-lista">
+                <!-- Estudiantes del período seleccionado -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gestionar disponibilidad de cupos -->
+    <section id="gestionar-cupos">
+        <h3>Gestionar Disponibilidad de Cupos</h3>
+        <form id="form-gestionar-cupos">
+            <label for="curso-cupos">Curso:</label>
+            <select id="curso-cupos" required>
+                <option value="matematica">Matemáticas</option>
+                <option value="ingles">Inglés</option>
+                <option value="fisica">Física</option>
+                <option value="programacion">Programación</option>
+            </select>
+            <label for="cupos-disponibles">Cupos Disponibles:</label>
+            <input type="number" id="cupos-disponibles" required placeholder="Número de cupos disponibles">
+            <button type="submit">Actualizar Cupos</button>
+        </form>
+        <div id="cupos-actualizados" style="display:none;">
+            <p>Cupos actualizados para el curso <span id="curso-cupos-actualizado"></span> con <span id="cupos-nuevos"></span> cupos disponibles.</p>
+        </div>
+    </section>
+</section>
+
+<script>
+    // Función para mostrar el QR
+    document.getElementById("btn-generar-qr").addEventListener("click", function() {
+        const qrCode = "https://example.com"; // Aquí puedes cambiar el enlace o texto
+        const qrImage = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrCode)}&size=150x150`;
+        document.getElementById("codigo-qr").src = qrImage;
+        document.getElementById("qr-generado").style.display = "block";
+    });
+
+    // Mostrar los pagos pendientes de un estudiante
+    document.getElementById("form-pagos-pendientes").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const estudiante = document.getElementById("estudiante-pendientes").value;
+        document.getElementById("estudiante-pendientes-nombre").textContent = estudiante;
+        document.getElementById("lista-pagos-pendientes").style.display = "block";
+    });
+
+    // Mostrar los estudiantes inscritos
+    document.getElementById("mostrar-estudiantes").addEventListener("click", function() {
+        document.getElementById("resultado-consulta-estudiantes").style.display = "block";
+    });
+</script>
+
+
+    <!-- Sección de Gestión de Usuarios -->
+    <!-- Sección de Gestión de Usuarios -->
+<section id="gestion-usuarios">
+    <h2>Gestión de Usuarios</h2>
+
+    <!-- Actualizar Datos Personales -->
+    <section id="actualizar-datos">
+        <h3>Actualizar Datos Personales</h3>
+        <form id="form-actualizar-datos">
+            <label for="estudiante-nombre">Nombre Completo:</label>
+            <input type="text" id="estudiante-nombre" required placeholder="Nombre completo del estudiante">
+
+            <label for="estudiante-correo">Correo Electrónico:</label>
+            <input type="email" id="estudiante-correo" required placeholder="Correo electrónico">
+
+            <label for="estudiante-telefono">Teléfono:</label>
+            <input type="text" id="estudiante-telefono" required placeholder="Número de teléfono">
+
+            <label for="estudiante-direccion">Dirección:</label>
+            <input type="text" id="estudiante-direccion" required placeholder="Dirección completa">
+
+            <button type="submit">Actualizar Datos</button>
+        </form>
+        <div id="datos-actualizados" style="display:none;">
+            <p>Los datos de <span id="estudiante-actualizado-nombre"></span> han sido actualizados correctamente.</p>
+        </div>
+    </section>
+
+    <!-- Registrar Nuevos Usuarios -->
+    <section id="registrar-usuario">
+        <h3>Registrar Nuevo Usuario</h3>
+        <form id="form-registrar-usuario">
+            <label for="usuario-nombre">Nombre Completo:</label>
+            <input type="text" id="usuario-nombre" required placeholder="Nombre completo del usuario">
+
+            <label for="usuario-correo">Correo Electrónico:</label>
+            <input type="email" id="usuario-correo" required placeholder="Correo electrónico">
+
+            <label for="usuario-rol">Rol:</label>
+            <select id="usuario-rol" required>
+                <option value="estudiante">Estudiante</option>
+                <option value="administrador">Administrador</option>
+                <option value="profesor">Profesor</option>
+            </select>
+
+            <button type="submit">Registrar Usuario</button>
+        </form>
+        <div id="usuario-registrado" style="display:none;">
+            <p>El usuario <span id="usuario-registrado-nombre"></span> ha sido registrado con el rol de <span id="usuario-rol-registrado"></span>.</p>
+        </div>
+    </section>
+
+    <!-- Gestionar Roles y Permisos -->
+    <section id="gestionar-roles">
+        <h3>Gestionar Roles y Permisos</h3>
+        <form id="form-gestionar-roles">
+            <label for="usuario-rol-gestion">Seleccionar Usuario:</label>
+            <select id="usuario-rol-gestion" required>
+                <option value="usuario1">Usuario 1</option>
+                <option value="usuario2">Usuario 2</option>
+                <option value="usuario3">Usuario 3</option>
+            </select>
+
+            <label for="nuevo-rol">Nuevo Rol:</label>
+            <select id="nuevo-rol" required>
+                <option value="estudiante">Estudiante</option>
+                <option value="administrador">Administrador</option>
+                <option value="profesor">Profesor</option>
+            </select>
+
+            <button type="submit">Actualizar Rol</button>
+        </form>
+        <div id="rol-actualizado" style="display:none;">
+            <p>El rol del usuario <span id="rol-usuario"></span> ha sido actualizado a <span id="rol-nuevo"></span>.</p>
+        </div>
+    </section>
+</section>
+
+<script>
+    // Función para actualizar datos personales
+    document.getElementById("form-actualizar-datos").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const nombre = document.getElementById("estudiante-nombre").value;
+        document.getElementById("estudiante-actualizado-nombre").textContent = nombre;
+        document.getElementById("datos-actualizados").style.display = "block";
+    });
+
+    // Función para registrar nuevos usuarios
+    document.getElementById("form-registrar-usuario").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const nombre = document.getElementById("usuario-nombre").value;
+        const rol = document.getElementById("usuario-rol").value;
+        document.getElementById("usuario-registrado-nombre").textContent = nombre;
+        document.getElementById("usuario-rol-registrado").textContent = rol;
+        document.getElementById("usuario-registrado").style.display = "block";
+    });
+
+    // Función para gestionar roles y permisos
+    document.getElementById("form-gestionar-roles").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const usuario = document.getElementById("usuario-rol-gestion").value;
+        const nuevoRol = document.getElementById("nuevo-rol").value;
+        document.getElementById("rol-usuario").textContent = usuario;
+        document.getElementById("rol-nuevo").textContent = nuevoRol;
+        document.getElementById("rol-actualizado").style.display = "block";
+    });
+</script>
+
+
+    <footer>
+        <p>© 2024 Universidad - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
